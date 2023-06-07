@@ -1,0 +1,16 @@
+name: Mirror Website
+on:
+  schedule:
+    - cron: "0 0 * * 0" # Runs every sunday at midnight
+
+jobs:
+  wget_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run wget
+        run: |
+          wget -mkxpKE --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0" -e robots=off https://example.com
